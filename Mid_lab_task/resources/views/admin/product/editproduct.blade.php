@@ -9,7 +9,7 @@
         <input type="text" class="form-control" id="exampleInputEmail1" name="id" value="{{$product_id['id']}}" placeholder="product id">
        
         @if ($errors->has('id'))
-        <span class="text-danger">{{ $errors->first('id') }}</span>
+        <span class="text-danger">{{ $errors->first('id') }}</span> 
          @endif
 
       </div>
@@ -21,7 +21,7 @@
         <input type="text" class="form-control" id="exampleInputPassword1" name="product_name" value="{{$product_id['product_name']}}" placeholder="product name">
         
         @if ($errors->has('product_name'))
-        <span class="text-danger">{{ $errors->first('product_name') }}</span>
+        <span class="text-danger">{{ $errors->first('product_name') }}</span>   {{-- bootstrap--}}
          @endif
      
       </div>
