@@ -4,6 +4,10 @@
     Admin || Dashboard
 @endsection
 
+@section('content_header_name')
+      Deshboard
+@endsection
+
 @section('content')
 <div class="content">
     <div class="container-fluid">

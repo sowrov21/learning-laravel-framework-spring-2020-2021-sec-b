@@ -14,7 +14,7 @@
         <img src="{{ asset('source/back/default.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+        <a href="#" class="d-block">{{'Hi !'}} {{ Auth::user()->full_name }}</a>
         </div>
     </div>
 
@@ -32,41 +32,40 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                    Physical Store
+                  Sales Management
+                  <i class="right fas fa-angle-left"></i>
                 </p>
-                </a>
-            </li>
-
-
-            <li class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p>
-                    Social Media
-                </p>
-                </a>
-            </li>
-
-
-
-
-            <li class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p>
-                    Ecommerce Web App
-                </p>
-                </a>
+              </a>
+              <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                  <a href="pages/charts/chartjs.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Physical Store</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/charts/flot.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Social Media</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/charts/inline.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ecommerce Web App</p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
 
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-edit"></i>
+                  <i class="nav-icon fas fa-warehouse"></i>
                   <p>
                     Product Management
                     <i class="fas fa-angle-left right"></i>
@@ -80,7 +79,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('ProductController.existing_products')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Existing Products</p>
                     </a>

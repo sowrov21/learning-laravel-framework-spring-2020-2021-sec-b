@@ -33,9 +33,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main Sidebar Container -->
     @include('admin.include.sidebar')
+     
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
+
+    <!-- Content header start -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">@yield('content_header_name')</h1>
+          </div><!-- /.col -->
+   
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- Content header end -->
+
         <!-- Main content -->
         @yield('content')
         <!-- /.content -->

@@ -58,6 +58,14 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/add_product', [ProductController::class,'add_product'])->name('ProductController.add_product');
 
+        //datatable
+
+        Route::get('/existing_products/edit/{id}', [ProductController::class,'edit'])->name('ProductController.edit');
+
+        Route::get('/existing_products/delete/{id}', [ProductController::class,'destroy'])->name('ProductController.destroy');
+
+        Route::get('/product/{product_id}', [ProductController::class,'show'])->name('ProductController.show');
+
     });
 
     
