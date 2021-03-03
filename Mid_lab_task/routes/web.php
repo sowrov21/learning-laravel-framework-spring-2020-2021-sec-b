@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesSystemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,29 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/salesman',[LoginController::class,'salesmanDashboard'])->name('salesman.dashboard');
         Route::get('/businesspartner',[LoginController::class,'businesspartnerDashboard'])->name('businesspartner.dashboard');
         Route::get('/vendor',[LoginController::class,'vendorDashboard'])->name('vendor.dashboard');
+    });
+
+    Route::group(['prefix' => 'system/sales'], function () {
+
+        Route::get('/physical_store', [SalesSystemController::class,'physicalStore'])->name('SalesSystemController.physicalStore');
+
+        Route::get('physical_store/salesLog', [SalesSystemController::class,'salesLog'])->name('SalesSystemController.salesLog');
+        Route::post('physical_store/salesLog', [SalesSystemController::class,'salesLogData'])->name('SalesSystemController.salesLog');
+
+        Route::get('/social_media', [SalesSystemController::class,'mediaLog'])->name('SalesSystemController.mediaLog');
+
+        Route::get('/ecommerce', [SalesSystemController::class,'ecommerceLog'])->name('SalesSystemController.ecommerceLog');
+    });
+
+
+    Route::group(['prefix' => 'system/product_management'], function () {
+
+        Route::get('/existing_products', [ProductController::class,'existing_products'])->name('ProductController.existing_products');
+
+        Route::get('/upcoming_products', [ProductController::class,'upcoming_products'])->name('ProductController.upcoming_products');
+
+        Route::get('/add_product', [ProductController::class,'add_product'])->name('ProductController.add_product');
+
     });
 
     

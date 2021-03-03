@@ -31,6 +31,69 @@
                 </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p>
+                    Physical Store
+                </p>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p>
+                    Social Media
+                </p>
+                </a>
+            </li>
+
+
+
+
+            <li class="nav-item">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p>
+                    Ecommerce Web App
+                </p>
+                </a>
+            </li>
+
+
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-edit"></i>
+                  <p>
+                    Product Management
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add Product</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Existing Products</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Upcoming Products</p>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

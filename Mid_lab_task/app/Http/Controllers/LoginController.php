@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -47,7 +48,11 @@ class LoginController extends Controller
     public function adminDashboard()
     {
         $data = User::find(session('loggedUser'));
-        return view('admin.include.home')->with('data',$data);
+        $count_existing_product = DB::table('products')->where('status', 'existing')->count();
+        $count_upcoming_product = DB::table('products')->where('status', 'upcomming')->count();
+        return view('admin.include.home')->with('data',$data)
+                                         ->with('existing_total_product', $count_existing_product)
+                                         ->with('upcoming_total_product', $count_upcoming_product);
     }
     public function customerDashboard()
     {
