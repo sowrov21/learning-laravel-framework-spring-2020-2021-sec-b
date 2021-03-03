@@ -9,6 +9,11 @@
   <div class="card-header">
     <h3 class="card-title">Show all existing inventory</h3>
   </div>
+   
+
+    <button type="button" class="btn btn-block btn-primary">Add Product</button>
+
+
   <!-- /.card-header -->
   <div class="card-body">
     <table id="example1" class="table table-bordered table-striped">
@@ -18,6 +23,7 @@
         <th>Product Name</th>
         <th>Category</th>
         <th>Unit Price</th>
+        <th>Status</th>
         <th>Product Added</th>
         <th>Product Updated</th>
         <th>Action</th>
@@ -33,6 +39,7 @@
        <td>{{$value['product_name']}}</td>
        <td>{{$value['category']}}</td>
        <td>{{$value['unit_price']}}</td>
+       <td>{{$value['status']}}</td>
        <td>{{$value['created_at']}}</td>
        <td>{{$value['updated_at']}}</td>
        <td>

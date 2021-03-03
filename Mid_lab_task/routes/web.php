@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
         //datatable
 
         Route::get('/existing_products/edit/{id}', [ProductController::class,'edit'])->name('ProductController.edit');
+        Route::post('/existing_products/edit/{id}', [ProductController::class,'update'])->name('ProductController.update');
 
         Route::get('/existing_products/delete/{id}', [ProductController::class,'destroy'])->name('ProductController.destroy');
 
