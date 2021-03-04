@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Support\Facades\Validator;
+//use Illuminate\Support\Facades\Validator;
 
 
 
@@ -24,7 +24,8 @@ class ProductController extends Controller
     }
     public function existing_products()
     {
-       $product_list= Product:: all();
+       //$product_list= Product:: all();
+       $product_list= Product:: latest()->get();
         
         return view('admin.product.producttable')->with('product_list',$product_list);
     }
@@ -58,7 +59,7 @@ class ProductController extends Controller
     {
            
         $request->validate([
-            'id' => 'required',
+            'id' => 'required|numeric',
             'product_name' => 'required|alpha|min:5|max:30',
             'category' => 'required',
             'unit_price' => 'required|numeric|min:1',
@@ -106,8 +107,13 @@ class ProductController extends Controller
     }
 
     
-    public function destroy(Product $product)
+    public function destroy(Product $product,$id)
     {
-        //
+       //return $id;
+        Product :: find($id)->delete();
+        $msg='Deleted Successfully';
+        Toastr::success($msg, 'Success.!'); 
+
+        return redirect()->back();
     }
 }

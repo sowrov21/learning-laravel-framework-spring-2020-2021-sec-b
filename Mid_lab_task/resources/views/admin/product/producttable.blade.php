@@ -23,7 +23,7 @@
         <th>Product Name</th>
         <th>Category</th>
         <th>Unit Price</th>
-        <th>Status</th>
+       <!-- <th>Status</th>-->
         <th>Product Added</th>
         <th>Product Updated</th>
         <th>Action</th>
@@ -39,13 +39,29 @@
        <td>{{$value['product_name']}}</td>
        <td>{{$value['category']}}</td>
        <td>{{$value['unit_price']}}</td>
-       <td>{{$value['status']}}</td>
+       <!--<td>{{$value['status']}}</td>-->
        <td>{{$value['created_at']}}</td>
        <td>{{$value['updated_at']}}</td>
-       <td>
-          <a href="{{ route('ProductController.edit', [$value['id']]) }}" class='btn btn-success'>Edit</a>
-          <a href="{{ route('ProductController.destroy', [$value['id']]) }}" class='btn btn-danger'>Delete</a>
-           <a href="{{ route('ProductController.show', [$value['id']]) }}" class='btn btn-info'>Details</a>
+       <td class="text-centre">
+          <a href="{{ route('ProductController.edit', [$value['id']]) }}" class='btn btn-success' data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+          
+          <button class="btn btn-danger waves-effect" type="button" onclick="deleteFunc({{$value['id']}})">
+            
+            <i class="fas fa-trash-alt"></i> 
+            
+          </button>
+
+          <form method="post" id="delete-form-{{$value['id']}}" action="{{route('ProductController.destroy',[$value['id']])}}" 
+          
+          style="display: none;">
+          
+          @csrf
+
+          @method('DELETE')
+
+          </form>
+          
+           <a href="{{ route('ProductController.show', [$value['id']]) }}" class='btn btn-info' data-toggle="tooltip" data-placement="top" title="Details"><i class="fas fa-info-circle"></i></a>
         </td>
     </tr>
     {{-- @endfor--}}

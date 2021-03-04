@@ -114,5 +114,73 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </script>
           <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
           {!! Toastr::message() !!}
+
+          {{--Global Tostar error using laravel error--}}
+<script>
+
+           @if($errors->any())
+
+                  @foreach ($errors->all() as $error)
+
+                       toastr.error('{{$error}}','Error.!',{
+                       
+                       closeButton:true,
+                       progressBar:true,
+                       
+                       }); //It requires optional parameter value
+
+                   @endforeach
+
+            @endif
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+
+<script type="text/javascript">
+
+       function deleteFunc(id){
+        //alert('Hi');
+                                  
+        const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    event.preventDefault();
+
+    document.getElementById('delete-form-'+id).submit();
+
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your Data is safe :)',
+      'error'
+    )
+  }
+})
+       
+     
+       }
+
+</script>
+         
     </body>
 </html>
