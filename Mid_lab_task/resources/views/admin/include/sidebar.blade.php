@@ -79,20 +79,20 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('ProductController.existing_products')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Existing Products</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('ProductController.upcoming_products')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Upcoming Products</p>
                     </a>
                   </li>
 
                   <li class="nav-item">
-                    <a href="{{route('ProductController.existing_products')}}" class="nav-link">
+                    <a href="{{route('ProductController.all_products')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>All Products</p>
                     </a>

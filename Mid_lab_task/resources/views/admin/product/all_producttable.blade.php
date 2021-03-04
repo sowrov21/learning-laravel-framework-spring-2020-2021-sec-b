@@ -7,7 +7,7 @@
 @section('content')
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Show all existing inventory</h3>
+    <h3 class="card-title">Show all inventory</h3>
   </div>
    
 
@@ -43,7 +43,7 @@
        <td>{{$value['created_at']}}</td>
        <td>{{$value['updated_at']}}</td>
        <td class="text-centre">
-          <a href="{{ route('ProductController.edit', [$value['id']]) }}" class='btn btn-success' data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+          <a href="{{ route('ProductController.edit_all', [$value['id']]) }}" class='btn btn-success' data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
           
           <button class="btn btn-danger waves-effect" type="button" onclick="deleteFunc({{$value['id']}})">
             
@@ -51,7 +51,7 @@
             
           </button>
 
-          <form method="post" id="delete-form-{{$value['id']}}" action="{{route('ProductController.destroy',[$value['id']])}}" 
+          <form method="post" id="delete-form-{{$value['id']}}" action="{{route('ProductController.destroy_all',[$value['id']])}}" 
           
           style="display: none;">
           

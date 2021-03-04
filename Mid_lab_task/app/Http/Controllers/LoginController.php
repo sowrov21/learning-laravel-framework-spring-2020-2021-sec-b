@@ -49,7 +49,7 @@ class LoginController extends Controller
     {
         $data = User::find(session('loggedUser'));
         $count_existing_product = DB::table('products')->where('status', 'existing')->count();
-        $count_upcoming_product = DB::table('products')->where('status', 'upcomming')->count();
+        $count_upcoming_product = DB::table('products')->where('status', 'upcoming')->count();
         return view('admin.include.home')->with('data',$data)
                                          ->with('existing_total_product', $count_existing_product)
                                          ->with('upcoming_total_product', $count_upcoming_product);

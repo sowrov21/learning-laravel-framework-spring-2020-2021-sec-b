@@ -54,18 +54,33 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/existing_products', [ProductController::class,'existing_products'])->name('ProductController.existing_products');
 
+        Route::get('/all_products', [ProductController::class,'all_products'])->name('ProductController.all_products');
+
         Route::get('/upcoming_products', [ProductController::class,'upcoming_products'])->name('ProductController.upcoming_products');
 
         Route::get('/add_product', [ProductController::class,'add_product'])->name('ProductController.add_product');
 
         //datatable
 
-        Route::get('/existing_products/edit/{id}', [ProductController::class,'edit'])->name('ProductController.edit');
-        Route::post('/existing_products/edit/{id}', [ProductController::class,'update'])->name('ProductController.update');
+        Route::get('/existing_products/edit/{id}', [ProductController::class,'edit_existing'])->name('ProductController.edit_existing');
+        Route::post('/existing_products/edit/{id}', [ProductController::class,'update_existing'])->name('ProductController.update_existing');
 
-        Route::delete('/existing_products/delete/{id}', [ProductController::class,'destroy'])->name('ProductController.destroy');
+        Route::delete('/existing_products/delete/{id}', [ProductController::class,'destroy_existing'])->name('ProductController.destroy_existing');
 
         Route::get('/product/{product_id}', [ProductController::class,'show'])->name('ProductController.show');
+     
+
+        Route::get('/upcoming_products/edit/{id}', [ProductController::class,'edit_upcoming'])->name('ProductController.edit_upcoming');
+        Route::post('/upcoming_products/edit/{id}', [ProductController::class,'update_upcoming'])->name('ProductController.update_upcoming');
+
+        Route::delete('/upcoming_products/delete/{id}', [ProductController::class,'destroy_upcoming'])->name('ProductController.destroy_upcoming');
+
+
+        Route::get('/all_products/edit/{id}', [ProductController::class,'edit_all'])->name('ProductController.edit_all');
+        Route::post('/all_products/edit/{id}', [ProductController::class,'update_all'])->name('ProductController.update_all');
+
+        Route::delete('/all_products/delete/{id}', [ProductController::class,'destroy_all'])->name('ProductController.destroy_all');
+
 
     });
 

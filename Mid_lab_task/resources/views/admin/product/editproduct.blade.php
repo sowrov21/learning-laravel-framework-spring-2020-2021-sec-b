@@ -51,7 +51,7 @@
       <div class="form-group">
         <label>Status</label>
         <select class="form-control" name="status">
-          <option value="upcomming" @if($product_id['status'] == 'upcomming') selected @endif>upcomming</option>
+          <option value="upcoming" @if($product_id['status'] == 'upcoming') selected @endif>upcoming</option>
           <option value="existing" @if($product_id['status'] == 'existing') selected @endif>existing</option>
 
         </select>
