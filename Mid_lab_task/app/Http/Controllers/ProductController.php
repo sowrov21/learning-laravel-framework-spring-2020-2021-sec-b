@@ -132,21 +132,6 @@ class ProductController extends Controller
             'status' => 'required',
         ])->validate(); */
 
-       /*  $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'product_name' => 'required|alpha|min:5|max:30',
-            'category' => 'required',
-            'unit_price' => 'required|numeric|min:1',
-            'status' => 'required',
-        ]);
-       
-        $errors = $validator->errors();
-
-        foreach ($errors->all() as $message) {
-
-            Toastr::error($message, 'Error');
-        } */
-           
            $product= Product :: find($id);
 
            $product->id = $request->id;
