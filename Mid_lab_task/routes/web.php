@@ -58,7 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/upcoming_products', [ProductController::class,'upcoming_products'])->name('ProductController.upcoming_products');
 
-        Route::get('/add_product', [ProductController::class,'add_product'])->name('ProductController.add_product');
+        Route::get('/add_product', [ProductController::class,'add_product_form'])->name('ProductController.add_product_form');
+        Route::post('/add_product', [ProductController::class,'add_product_store'])->name('ProductController.add_product_store');
 
         //datatable
 

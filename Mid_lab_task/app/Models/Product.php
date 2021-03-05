@@ -16,6 +16,7 @@ class Product extends Model
         'category',
         'unit_price',
         'status',
+        'vendor_id',
     ];
 
 

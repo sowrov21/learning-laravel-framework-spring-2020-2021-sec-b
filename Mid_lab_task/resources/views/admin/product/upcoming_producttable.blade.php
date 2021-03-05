@@ -10,8 +10,18 @@
     <h3 class="card-title">Show all Upcoming inventory</h3>
   </div>
    
+  <div class="text-right">
+    <a href="{{route('ProductController.add_product_form')}}" ><button class="btn btn-primary waves-effect">Add New Product</button></a> 
+ </div> 
 
-    <button type="button" class="btn btn-block btn-primary">Add Product</button>
+ <div class="row">
+  <div class="col-xs-12">
+      <div class="text-right">
+          <button type="button" class="btn btn-default">Default</button>
+      </div>
+  </div>
+</div>
+
 
 
   <!-- /.card-header -->

@@ -11,7 +11,9 @@
   </div>
    
 
-    <button type="button" class="btn btn-block btn-primary">Add Product</button>
+  <div class="text-right">
+    <a href="{{route('ProductController.add_product_form')}}" ><button class="btn btn-primary waves-effect">Add New Product</button></a> 
+ </div> 
 
 
   <!-- /.card-header -->

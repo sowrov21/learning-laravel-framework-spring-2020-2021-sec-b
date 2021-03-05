@@ -19,7 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->string('unit_price');
             $table->string('status');
+            $table->bigInteger('vendor_id')->unsigned();
             $table->timestamps();
+
+           $table->foreign('vendor_id')->references('id')->on('vendors');
         });
     }
 

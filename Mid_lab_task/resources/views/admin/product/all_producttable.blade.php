@@ -11,7 +11,9 @@
   </div>
    
 
-    <button type="button" class="btn btn-block btn-primary">Add Product</button>
+  <div class="text-right">
+    <a href="{{route('ProductController.add_product_form')}}" ><button class="btn btn-primary waves-effect">Add New Product</button></a> 
+ </div> 
 
 
   <!-- /.card-header -->
@@ -23,7 +25,7 @@
         <th>Product Name</th>
         <th>Category</th>
         <th>Unit Price</th>
-       <!-- <th>Status</th>-->
+       <th>Status</th>
         <th>Product Added</th>
         <th>Product Updated</th>
         <th>Action</th>
@@ -39,7 +41,7 @@
        <td>{{$value['product_name']}}</td>
        <td>{{$value['category']}}</td>
        <td>{{$value['unit_price']}}</td>
-       <!--<td>{{$value['status']}}</td>-->
+       <td>{{$value['status']}}</td>
        <td>{{$value['created_at']}}</td>
        <td>{{$value['updated_at']}}</td>
        <td class="text-centre">

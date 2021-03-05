@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
+use App\Models\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
-
+//use App\Http\Requests\UserRequest;
 
 
 
@@ -57,6 +58,45 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //post method to submit form
+    }      
+    
+    public function  add_product_form(Request $request)
+    {
+         //get method to view form
+        $van_info= Vendor::select('id','vendor_name')->get();
+         return view('admin.product.add_product',compact('van_info'));
+    }  
+    
+    public function add_product_store(Request $request)
+    {
+        //submit form validation
+
+        $request->validate([
+            'id' => 'required|numeric',
+            'product_name' => 'required|alpha|min:5|max:30',
+            'category' => 'required',
+            'unit_price' => 'required|numeric|min:1',
+            'status' => 'required',
+        ]);
+
+
+        //post method to submit form
+
+        $product= new Product(); 
+
+        $product->id = $request->id;
+        $product->product_name=$request->product_name;
+        $product->category=$request->category;
+        $product->unit_price=$request->unit_price;
+        $product->status=$request->status;
+        $product->vendor_id=$request->vendor_id;
+        
+        $product->save();
+        $msg='New Product Added Successfully';
+        Toastr::success($msg, 'Success.!'); 
+
+        return redirect()->route('ProductController.all_products');
+
     }
 
 
@@ -116,7 +156,7 @@ class ProductController extends Controller
            $product->status=$request->status;
            
            $product->save();
-           $msg='Product Added Successfully';
+           $msg='Product Updated Successfully';
            Toastr::success($msg, 'Success.!'); 
 
            return redirect('/system/product_management/existing_products');
