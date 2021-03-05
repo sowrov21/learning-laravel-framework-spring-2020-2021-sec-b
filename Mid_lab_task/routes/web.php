@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::delete('/existing_products/delete/{id}', [ProductController::class,'destroy_existing'])->name('ProductController.destroy_existing');
 
-        Route::get('/product/{product_id}', [ProductController::class,'show'])->name('ProductController.show');
+        Route::get('/product/details/{product_id}', [ProductController::class,'show'])->name('ProductController.show');
      
 
         Route::get('/upcoming_products/edit/{id}', [ProductController::class,'edit_upcoming'])->name('ProductController.edit_upcoming');

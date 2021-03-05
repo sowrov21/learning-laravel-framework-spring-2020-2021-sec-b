@@ -100,9 +100,11 @@ class ProductController extends Controller
     }
 
 
-    public function show(Product $product)
+    public function show($product_id)
     {
         //
+        $product_id= Product :: find($product_id);
+        return view('admin.product.details_view')->with('product',$product_id);
     }
 
 
