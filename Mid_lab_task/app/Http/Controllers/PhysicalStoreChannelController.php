@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\PhysicalStoreChannel;
+use Brian2694\Toastr\Facades\Toastr;
 
 class PhysicalStoreChannelController extends Controller
 {
@@ -15,10 +18,20 @@ class PhysicalStoreChannelController extends Controller
      */
     public function viewSalesLog()
     {
+        
+        $today_sold=DB :: table('physical_store_channels')->whereDate('created_at', Carbon::today())->get()->count();
+
+        $date = \Carbon\Carbon::today()->subDays(7);
+        $last_7_day_sold = DB:: table('physical_store_channels')->whereDate('created_at', '>=', $date)->get()->count();
+
+        $sell_each_months = DB:: table('physical_store_channels')->whereDate('created_at', '>=', $date)->sum('total_price');
+       // return dd($avg_sell_by_months/30);
+            $avg_sell_by_months= $sell_each_months/30;
         $product_list= Product:: all()->where('status','existing');
-        //$product_list= Product:: latest()->get();
-         
-         return view('admin.sales.view_physical_store')->with('product_list',$product_list);
+         return view('admin.sales.view_physical_store')->with('product_list',$product_list)
+                                                       ->with('today_sold', $today_sold)
+                                                       ->with('last_7_day_sold', $last_7_day_sold)
+                                                       ->with('avg_sell_by_months',  $avg_sell_by_months);
     }
 
 
@@ -34,9 +47,43 @@ class PhysicalStoreChannelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function saveSalesLogData(Request $request,$id)
     {
-        //
+               //submit form validation
+
+               $request->validate([
+                'customer_name'=> 'required|regex:/^[a-zA-Z\s]*$/|min:5|max:30',
+                'phone'=> 'required|numeric|min:11|max:15',
+                'address'=> 'required|max:50|min:3',
+                'product_id'=> 'required',
+                'product_name'=> 'required',
+                 'category'=> 'required',
+                 'unit_price'=> 'required|numeric|min:1',
+                 'quantity'=> 'required|numeric|min:1|max:20',
+                 'total_price'=> 'required|numeric|min:1',
+            ]);
+   
+  
+            //post method to submit form
+            $psc= PhysicalStoreChannel :: find($id);
+
+            $psc->customer_name=$request->customer_name;
+            $psc->phone=$request->phone;
+            $psc->address=$request->address;
+            $psc->product_id=$request->product_id;
+            $psc->product_name=$request->product_name;
+            $psc->category=$request->category;
+            $psc->unit_price=$request->unit_price;
+            $psc->quantity=$request->quantity;
+            $psc->total_price=$request->total_price;
+            $psc->payment_type=$request->payment_type;
+            $psc->status=$request->status;
+            $psc->save();
+
+            $msg='New Product Sold Successfully';
+            Toastr::success($msg, 'Success.!'); 
+    
+            return redirect()->route('ProductController.all_products');
     }
 
     /**

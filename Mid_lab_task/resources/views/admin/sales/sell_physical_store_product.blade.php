@@ -47,7 +47,7 @@
       <div class="card-body">
         <div class="form-group">
           <label >Product ID</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" name="id" value="{{$product_id['id']}}" placeholder="product id">
+          <input type="text" class="form-control" id="exampleInputEmail1" name="product_id" value="{{$product_id['id']}}" placeholder="product id">
          
           @if ($errors->has('id'))
           <span class="text-danger">{{ $errors->first('id') }}</span> 
@@ -93,8 +93,8 @@
           <label >Quantity</label>
           <input type="text" class="form-control" id="exampleInputEmail1" name="quantity" value="{{old('quantity')}}" placeholder="e.g 1,2,3">
          
-          @if ($errors->has('id'))
-          <span class="text-danger">{{ $errors->first('id') }}</span> 
+          @if ($errors->has('quantity'))
+          <span class="text-danger">{{ $errors->first('quantity') }}</span> 
            @endif
   
         </div>
@@ -103,15 +103,15 @@
           <label >Total Price</label>
           <input type="text" class="form-control" id="exampleInputEmail1" name="total_price" value="{{old('total_price')}}" placeholder="quantity*unit_price">
          
-          @if ($errors->has('id'))
-          <span class="text-danger">{{ $errors->first('id') }}</span> 
+          @if ($errors->has('total_price'))
+          <span class="text-danger">{{ $errors->first('total_price') }}</span> 
            @endif
   
         </div>
 
         <div class="form-group">
           <label>Payment Type</label>
-          <select class="form-control" name="status">
+          <select class="form-control" name="payment_type">
             <option >Cash</option>
             <option >Card</option>
             <option >Online</option>
@@ -124,7 +124,7 @@
           <label>Status</label>
           <select class="form-control" name="status">
             <option >Sold</option>
-            <option >Unsold</option>
+            <option >Pending</option>
   
           </select>
         </div>

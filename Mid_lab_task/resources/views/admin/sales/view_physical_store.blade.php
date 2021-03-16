@@ -12,13 +12,14 @@
       <div class="row">
 
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h6>Today Sold: 44</h6>
-                <h6>Last Week Sold: 44</h6>
-
+                <h4>Today Sold Items: {{$today_sold}}</h4>
+                <h4>Last Week Sold Items: {{$last_7_day_sold}}</h4>
+                <h4>Avg. Sell By Months: {{$avg_sell_by_months}} <i class="fas fa-dollar-sign fa-sm"></i></h4>
+          
                 <p>Physical Store</p>
               </div>
               <div class="icon">
