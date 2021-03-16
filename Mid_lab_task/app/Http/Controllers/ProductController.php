@@ -104,7 +104,10 @@ class ProductController extends Controller
     {
         //
         $product_id= Product :: find($product_id);
-        return view('admin.product.details_view')->with('product',$product_id);
+        $vendors = Vendor :: all();
+        //return dd($vendors);
+        return view('admin.product.details_view')->with('product',$product_id)
+                                                 ->with('vendors',$vendors);
     }
 
 

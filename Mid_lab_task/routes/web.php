@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesSystemController;
+use App\Http\Controllers\PhysicalStoreChannelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +42,13 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/physical_store', [SalesSystemController::class,'physicalStore'])->name('SalesSystemController.physicalStore');
 
-        Route::get('physical_store/salesLog', [SalesSystemController::class,'salesLog'])->name('SalesSystemController.salesLog');
-        Route::post('physical_store/salesLog', [SalesSystemController::class,'salesLogData'])->name('SalesSystemController.salesLog');
-
         Route::get('/social_media', [SalesSystemController::class,'mediaLog'])->name('SalesSystemController.mediaLog');
 
         Route::get('/ecommerce', [SalesSystemController::class,'ecommerceLog'])->name('SalesSystemController.ecommerceLog');
+       
+        //Physical Store
+        Route::get('physical_store/salesLog/', [PhysicalStoreChannelController::class,'viewSalesLog'])->name('PhysicalStoreChannelController.viewSalesLog');
+        Route::get('physical_store/salesLog/submit/{id}', [PhysicalStoreChannelController::class,'salesLogData'])->name('PhysicalStoreChannelController.salesLogData');
     });
 
 

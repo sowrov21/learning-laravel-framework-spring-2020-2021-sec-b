@@ -20,8 +20,9 @@ class Product extends Model
     ];
 
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+
+    public function vendors()
+    {
+        return $this->belongsTo('App\Models\Vendor');
+    }
 }

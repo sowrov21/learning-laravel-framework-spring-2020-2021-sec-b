@@ -41,11 +41,24 @@
                 </p>
               </a>
               <ul class="nav nav-treeview" style="display: none;">
+
                 <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Physical Store</p>
+                    <p>
+                      Physical Store
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
                   </a>
+
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="{{route('PhysicalStoreChannelController.viewSalesLog')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Sales Log</p>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="pages/charts/flot.html" class="nav-link">

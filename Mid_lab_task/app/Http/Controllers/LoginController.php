@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -50,9 +51,27 @@ class LoginController extends Controller
         $data = User::find(session('loggedUser'));
         $count_existing_product = DB::table('products')->where('status', 'existing')->count();
         $count_upcoming_product = DB::table('products')->where('status', 'upcoming')->count();
+        $today_sold=DB :: table('physical_store_channels')->whereDate('created_at', Carbon::today())->get()->count();
+
+        $date = \Carbon\Carbon::today()->subDays(7);
+        $last_7_day_sold = DB:: table('physical_store_channels')->whereDate('created_at', '>=', $date)->get()->count();
+       
+        $smc_today_sold=DB :: table('physical_store_channels')->whereDate('created_at', Carbon::today())->get()->count();
+        $ec_today_sold=DB :: table('ecommerce_channels')->whereDate('created_at', Carbon::today())->get()->count();
+
+        $smc_last_7_day_sold = DB:: table('social_media_channels')->whereDate('created_at', '>=', $date)->get()->count();
+        $ec_last_7_day_sold = DB:: table('ecommerce_channels')->whereDate('created_at', '>=', $date)->get()->count();
+       
+        // return dd( $dt);
         return view('admin.include.home')->with('data',$data)
                                          ->with('existing_total_product', $count_existing_product)
-                                         ->with('upcoming_total_product', $count_upcoming_product);
+                                         ->with('upcoming_total_product', $count_upcoming_product)
+                                         ->with('today_sold', $today_sold)
+                                         ->with('last_7_day_sold', $last_7_day_sold)
+                                         ->with('smc_today_sold', $smc_today_sold)
+                                         ->with('smc_last_7_day_sold', $smc_last_7_day_sold)
+                                         ->with('ec_today_sold', $ec_today_sold)
+                                         ->with('ec_last_7_day_sold', $ec_last_7_day_sold);
     }
     public function customerDashboard()
     {

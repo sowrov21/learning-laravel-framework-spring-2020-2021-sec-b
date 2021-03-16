@@ -21,4 +21,9 @@ class Vendor extends Model
          'password',
          'remember_token',
      ];
+
+     public function products()
+     {
+         return $this->hasMany('App\Models\Product');
+     }
 }
