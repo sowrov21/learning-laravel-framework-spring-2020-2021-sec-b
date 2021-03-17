@@ -43,18 +43,18 @@
 
   <div class="card-header p-2">
 			  
-    <a href="#" ><button class="btn btn-dark waves-effect">Download Sales Report</button></a> 
-          <a href="#" ><button class="btn btn-dark waves-effect">Download Pending Log</button></a> 
+    <a href="{{route('PhysicalStoreChannelController.excel_report')}}" ><button class="btn btn-dark waves-effect">Download Sales Report</button></a> 
+          <a href="{{route('PhysicalStoreChannelController.pending_excel_report')}}" ><button class="btn btn-dark waves-effect">Download Pending Log</button></a> 
   <ul class="nav nav-pills">
-    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Sales Point</a></li>
-    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Show All Logs</a></li>
-    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Show Sold Logs</a></li>
-    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Show Pending Logs</a></li>
+    <li class="nav-item"><a class="nav-link active" href="#sales_point" data-toggle="tab">Sales Point</a></li>
+    <li class="nav-item"><a class="nav-link" href="#all_logs" data-toggle="tab">Show All Logs</a></li>
+    <li class="nav-item"><a class="nav-link" href="#sold_logs" data-toggle="tab">Show Sold Logs</a></li>
+    <li class="nav-item"><a class="nav-link" href="#pending_logs" data-toggle="tab">Show Pending Logs</a></li>
   </ul>
 </div><!-- /.card-header -->
 <div class="card-body">
   <div class="tab-content">
-    <div class="active tab-pane" id="activity">
+    <div class="active tab-pane" id="sales_point">
       <!-- Post -->
    
 <!-- Sales log Here -->
@@ -117,21 +117,171 @@
       <!-- /.post -->
     </div>
     <!-- /.tab-pane -->
-    <div class="tab-pane" id="timeline">
+    <div class="tab-pane" id="all_logs">
       <!-- The timeline -->
       <div class="timeline timeline-inverse">
         <!-- Show All Logs -->
 
-        <p>hi show all</p>
+    <!-- /.card-header -->
+<div class="card-body">
+  <table id="example1" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Customer</th>
+      <th>Product</th>
+      <th>Unit_Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Payment</th>
+      <th>Status</th>
+     <!-- <th>Status</th>-->
+      <th>Added</th>
+      <th>Updated</th>
+    </tr>
+    </thead>
+    <tbody>
+  
+      {{--@for($i=0; $i< count($list);$i++)--}}
+  
+  @foreach ($all_logs as $value) 
+  <tr>
+     <td>{{$value->id}}</td>
+     <td>{{$value->customer_name}}</td>
+     <td>{{$value->product_name}}</td>
+     <td>{{$value->unit_price}}</td>
+     <td>{{$value->quantity}}</td>
+     <td>{{$value->total_price}}</td>
+     <td>{{$value->payment_type}}</td>
+     <td>
+      @if ($value->status=='Pending')
+      <span class="badge bg-red"> {{$value->status}} </span> 
+   @else
+       <span class="badge bg-green"> {{$value->status}} </span> 
+   @endif
+    </td>
+     <td>{{$value->created_at}}</td>
+     <td>{{$value->updated_at}}</td>
+
+  </tr>
+  {{-- @endfor--}}
+  @endforeach
+
+    </tbody>
+   
+  </table>
+</div>
 
       </div>
     </div>
     <!-- /.tab-pane -->
 
-    <div class="tab-pane" id="settings">
+    <div class="tab-pane" id="sold_logs">
+
+      <!-- Show Sold Logs -->
+      <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Unit_Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Status</th>
+           <!-- <th>Status</th>-->
+            <th>Added</th>
+            <th>Updated</th>
+          </tr>
+          </thead>
+          <tbody>
+        
+            {{--@for($i=0; $i< count($list);$i++)--}}
+        
+        @foreach ($sold_logs as $value) 
+        <tr>
+           <td>{{$value->id}}</td>
+           <td>{{$value->customer_name}}</td>
+           <td>{{$value->product_name}}</td>
+           <td>{{$value->unit_price}}</td>
+           <td>{{$value->quantity}}</td>
+           <td>{{$value->total_price}}</td>
+           <td>{{$value->payment_type}}</td>
+           <td>
+            @if ($value->status=='Pending')
+            <span class="badge bg-red"> {{$value->status}} </span> 
+         @else
+             <span class="badge bg-green"> {{$value->status}} </span> 
+         @endif
+
+           </td>
+           <td>{{$value->created_at}}</td>
+           <td>{{$value->updated_at}}</td>
+      
+        </tr>
+        {{-- @endfor--}}
+        @endforeach
+      
+          </tbody>
+         
+        </table>
+      </div>
+    </div>
+
+
+    <div class="tab-pane" id="pending_logs">
 
       <!-- Show Pending Logs -->
-      <p>hi pending</p>
+      <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Unit_Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Status</th>
+           <!-- <th>Status</th>-->
+            <th>Added</th>
+            <th>Updated</th>
+          </tr>
+          </thead>
+          <tbody>
+        
+            {{--@for($i=0; $i< count($list);$i++)--}}
+        
+        @foreach ($pending_logs as $value) 
+        <tr>
+           <td>{{$value->id}}</td>
+           <td>{{$value->customer_name}}</td>
+           <td>{{$value->product_name}}</td>
+           <td>{{$value->unit_price}}</td>
+           <td>{{$value->quantity}}</td>
+           <td>{{$value->total_price}}</td>
+           <td>{{$value->payment_type}}</td>
+           <td>
+             @if ($value->status=='Pending')
+                <span class="badge bg-red"> {{$value->status}} </span> 
+             @else
+                 <span class="badge bg-green"> {{$value->status}} </span> 
+             @endif
+            </td>
+           <td>{{$value->created_at}}</td>
+           <td>{{$value->updated_at}}</td>
+      
+        </tr>
+        {{-- @endfor--}}
+        @endforeach
+      
+          </tbody>
+         
+        </table>
+      </div>
     </div>
 
 

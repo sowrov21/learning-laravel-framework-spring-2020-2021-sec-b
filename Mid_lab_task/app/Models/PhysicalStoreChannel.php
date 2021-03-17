@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PhysicalStoreChannel extends Model
 {
@@ -24,6 +26,24 @@ class PhysicalStoreChannel extends Model
          'payment_type',
          'status',
      ];
+
+     public static function getSalesLog()
+     {
+        
+        $date = \Carbon\Carbon::today()->subDays(30);
+
+        $data = DB :: table('physical_store_channels')->whereDate('created_at', '>=', $date)->where('status','Sold')->get()->toArray();
+          return $data;
+     }
+
+     public static function getPendingLog()
+     {
+        
+        $date = \Carbon\Carbon::today()->subDays(30);
+
+        $data = DB :: table('physical_store_channels')->whereDate('created_at', '>=', $date)->where('status','Pending')->get()->toArray();
+          return $data;
+     }
 
 
 

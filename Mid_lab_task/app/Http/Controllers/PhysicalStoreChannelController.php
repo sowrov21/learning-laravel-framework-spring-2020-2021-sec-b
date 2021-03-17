@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Excel;
 use Carbon\Carbon;
 use App\Models\Product;
+use App\Exports\PendingLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Exports\PhysicaStoreReport;
 use App\Models\PhysicalStoreChannel;
 use Brian2694\Toastr\Facades\Toastr;
+
+
 
 class PhysicalStoreChannelController extends Controller
 {
@@ -28,10 +34,16 @@ class PhysicalStoreChannelController extends Controller
        // return dd($avg_sell_by_months/30);
             $avg_sell_by_months= $sell_each_months/30;
         $product_list= Product:: all()->where('status','existing');
+        $all_logs = PhysicalStoreChannel :: all();
+        $sold_logs = PhysicalStoreChannel :: all()->where('status','Sold');
+        $pending_logs = PhysicalStoreChannel :: all()->where('status','Pending');
          return view('admin.sales.view_physical_store')->with('product_list',$product_list)
                                                        ->with('today_sold', $today_sold)
                                                        ->with('last_7_day_sold', $last_7_day_sold)
-                                                       ->with('avg_sell_by_months',  $avg_sell_by_months);
+                                                       ->with('avg_sell_by_months',  $avg_sell_by_months)
+                                                       ->with('all_logs',  $all_logs)
+                                                       ->with('sold_logs',  $sold_logs)
+                                                       ->with('pending_logs',  $pending_logs);
     }
 
 
@@ -86,15 +98,16 @@ class PhysicalStoreChannelController extends Controller
             return redirect()->route('ProductController.all_products');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PhysicalStoreChannel  $physicalStoreChannel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PhysicalStoreChannel $physicalStoreChannel)
+
+    public function excel_report()
     {
-        //
+        return Excel :: download( new PhysicaStoreReport,'SalesLog.xlsx');
+    }
+   
+   
+    public function pending_excel_report()
+    {
+       return Excel :: download( new PendingLogs,'PendingLog.xlsx');
     }
 
     /**

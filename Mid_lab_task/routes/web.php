@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('physical_store/salesLog/', [PhysicalStoreChannelController::class,'viewSalesLog'])->name('PhysicalStoreChannelController.viewSalesLog');
         Route::get('physical_store/salesLog/get/{id}', [PhysicalStoreChannelController::class,'salesLogData'])->name('PhysicalStoreChannelController.salesLogData');
         Route::post('physical_store/salesLog/get/{id}', [PhysicalStoreChannelController::class,'saveSalesLogData'])->name('PhysicalStoreChannelController.saveSalesLogData');
+        Route::get('sales/logs', [PhysicalStoreChannelController::class,'excel_report'])->name('PhysicalStoreChannelController.excel_report');
+        Route::get('pending/logs', [PhysicalStoreChannelController::class,'pending_excel_report'])->name('PhysicalStoreChannelController.pending_excel_report');
     });
 
 
