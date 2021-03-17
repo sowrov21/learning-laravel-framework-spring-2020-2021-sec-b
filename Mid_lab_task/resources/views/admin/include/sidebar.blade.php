@@ -34,7 +34,7 @@
 
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
+                <i class="fas fa-hand-holding-usd"></i>
                 <p>
                   Sales Management
                   <i class="right fas fa-angle-left"></i>
@@ -44,7 +44,7 @@
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-store-alt"></i>
                     <p>
                       Physical Store
                       <i class="right fas fa-angle-left"></i>
@@ -54,7 +54,7 @@
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
                       <a href="{{route('PhysicalStoreChannelController.viewSalesLog')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                        <i class="fas fa-clipboard-list"></i>
                         <p>Sales Log</p>
                       </a>
                     </li>
@@ -62,13 +62,13 @@
                 </li>
                 <li class="nav-item">
                   <a href="pages/charts/flot.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-bullhorn"></i>
                     <p>Social Media</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="pages/charts/inline.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fab fa-opencart"></i>
                     <p>Ecommerce Web App</p>
                   </a>
                 </li>
@@ -78,7 +78,7 @@
 
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-warehouse"></i>
+                  <i class="fas fa-sitemap"></i>
                   <p>
                     Product Management
                     <i class="fas fa-angle-left right"></i>
@@ -87,26 +87,26 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{route('ProductController.add_product_form')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="far fa-plus-square"></i>
                       <p>Add Product</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{route('ProductController.existing_products')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-landmark"></i>
                       <p>Existing Products</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{route('ProductController.upcoming_products')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-spinner fa-spin"></i>
                       <p>Upcoming Products</p>
                     </a>
                   </li>
 
                   <li class="nav-item">
                     <a href="{{route('ProductController.all_products')}}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="far fa-list-alt"></i>
                       <p>All Products</p>
                     </a>
                   </li>

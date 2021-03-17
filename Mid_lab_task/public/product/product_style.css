@@ -1,0 +1,19 @@
+.customer{
+float: right;
+margin-left: 200px;
+}
+
+.test{
+    height: 50px;
+    margin: 50px;
+    background-color: black;
+    }
+
+    .test1{
+        height: 50px;
+        background-color:blue;
+        }
+        .test2{
+            height: 50px;
+            background-color: red;
+            }
