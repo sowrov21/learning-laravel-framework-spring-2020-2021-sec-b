@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Excel;
 use Carbon\Carbon;
 use App\Models\Product;
 use App\Exports\PendingLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 use App\Exports\PhysicaStoreReport;
+
 use App\Models\PhysicalStoreChannel;
 use Brian2694\Toastr\Facades\Toastr;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 
@@ -103,6 +103,7 @@ class PhysicalStoreChannelController extends Controller
     {
         return Excel :: download( new PhysicaStoreReport,'SalesLog.xlsx');
     }
+    
    
    
     public function pending_excel_report()

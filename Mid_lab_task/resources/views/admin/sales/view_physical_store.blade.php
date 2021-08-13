@@ -19,13 +19,11 @@
                 <h4>Today Sold Items: {{$today_sold}}</h4>
                 <h4>Last Week Sold Items: {{$last_7_day_sold}}</h4>
                 <h4>Avg. Sell By Months: {{$avg_sell_by_months}} <i class="fas fa-dollar-sign fa-sm"></i></h4>
-          
-                <p>Physical Store</p>
               </div>
               <div class="icon">
                 <i class="fas fa-store"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             
             </div>
           </div> 
 
